@@ -1,0 +1,127 @@
+:root {
+  color-scheme: light;
+  font-family: "Inter", Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f4f7fb;
+  color: #152238;
+}
+
+header {
+  background: #0d4e96;
+  color: #fff;
+  padding: 1rem 2rem;
+}
+
+header h1 {
+  margin: 0 0 0.7rem;
+  font-size: 1.4rem;
+}
+
+nav {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+nav a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+main {
+  max-width: 1100px;
+  margin: 1.2rem auto;
+  padding: 0 1rem 2rem;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 0.8rem;
+  margin-bottom: 1rem;
+}
+
+.card,
+.panel,
+.form-section {
+  background: white;
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 5px 14px rgba(30, 51, 84, 0.09);
+}
+
+.card h3 {
+  margin-top: 0;
+}
+
+.card p {
+  font-size: 1.8rem;
+  margin: 0;
+  color: #0d4e96;
+  font-weight: 700;
+}
+
+.panel-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+}
+
+@media (max-width: 840px) {
+  .panel-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 0.55rem;
+  border-bottom: 1px solid #edf1f8;
+}
+
+.grid-form {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 0.6rem;
+}
+
+input,
+select,
+button {
+  border: 1px solid #cdd7e8;
+  border-radius: 8px;
+  padding: 0.55rem 0.65rem;
+  font: inherit;
+}
+
+button {
+  background: #0d4e96;
+  color: #fff;
+  cursor: pointer;
+}
+
+.flash-wrap {
+  display: grid;
+  gap: 0.4rem;
+  margin-bottom: 0.8rem;
+}
+
+.flash {
+  padding: 0.65rem;
+  border-radius: 8px;
+}
+
+.flash.success {
+  background: #ddf8e4;
+  color: #0d6a26;
+}
