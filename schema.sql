@@ -1,3 +1,5 @@
+DROP TABLE IF EXISTS mes_events CASCADE;
+DROP TABLE IF EXISTS erp_procurements CASCADE;
 DROP TABLE IF EXISTS employees CASCADE;
 DROP TABLE IF EXISTS inventory CASCADE;
 DROP TABLE IF EXISTS production_batches CASCADE;
@@ -36,4 +38,26 @@ CREATE TABLE orders (
     quantity_boxes INTEGER NOT NULL,
     due_date DATE NOT NULL,
     status TEXT NOT NULL
+);
+
+CREATE TABLE erp_procurements (
+    id SERIAL PRIMARY KEY,
+    supplier_name TEXT NOT NULL,
+    material TEXT NOT NULL,
+    quantity NUMERIC NOT NULL,
+    unit TEXT NOT NULL,
+    total_cost NUMERIC NOT NULL,
+    status TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
+);
+
+CREATE TABLE mes_events (
+    id SERIAL PRIMARY KEY,
+    line_name TEXT NOT NULL,
+    event_type TEXT NOT NULL,
+    duration_minutes INTEGER NOT NULL,
+    reason TEXT NOT NULL,
+    quality_score NUMERIC NOT NULL,
+    status TEXT NOT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT NOW()
 );
