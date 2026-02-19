@@ -1,37 +1,44 @@
 # IceFactory ERP — Автоматизация деятельности мороженого завода
 
-Готовый веб-сайт для управления деятельностью мороженого завода с базой данных SQLite.
+Готовый веб-сайт для управления мороженым заводом с базой данных **PostgreSQL**.
 
 ## Возможности
-- Дашборд с оперативной статистикой;
+- Дашборд с KPI;
 - Учет сотрудников;
 - Склад сырья и упаковки;
 - Производственные партии;
-- Заказы клиентов;
-- Хранение данных в БД `factory.db`.
+- Заказы клиентов.
 
-## Технологии
-- Python 3 (стандартная библиотека)
-- HTTP-сервер на `http.server`
-- SQLite
-- HTML/CSS
+## Стек
+- Python 3
+- `http.server`
+- PostgreSQL
+- `psycopg` (PostgreSQL драйвер)
 
-## Запуск
+## 1) Поднять PostgreSQL (пример через Docker)
 ```bash
+docker run --name icefactory-postgres \
+  -e POSTGRES_PASSWORD=postgres \
+  -e POSTGRES_DB=icefactory \
+  -p 5432:5432 -d postgres:16
+```
+
+## 2) Установить зависимости и запустить сайт
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+export DATABASE_URL='postgresql://postgres:postgres@localhost:5432/icefactory'
 python3 app.py
 ```
 
-После запуска откройте:
-- `http://127.0.0.1:5000`
+После запуска откройте `http://127.0.0.1:5000`.
 
-## Переинициализация базы данных
-Откройте в браузере:
-- `http://127.0.0.1:5000/setup`
-
-Это заново создаст таблицы и заполнит стартовыми данными.
+## Переинициализация данных
+- Перейдите на `http://127.0.0.1:5000/setup`
+- Будет повторно применена схема из `schema.sql` и стартовые данные.
 
 ## Структура
-- `app.py` — backend, маршруты и обработка форм;
-- `schema.sql` — схема базы данных;
-- `static/styles.css` — стили интерфейса;
-- `factory.db` — локальная база данных (создается автоматически).
+- `app.py` — web backend и CRUD-маршруты;
+- `schema.sql` — схема PostgreSQL;
+- `static/styles.css` — стили интерфейса.
